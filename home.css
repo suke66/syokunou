@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+body{
+    background-color: black;
+    color: red;
+    overflow-y:hidden;
+    overflow-x:hidden;
+    background-image: url("1.png");
+    background-position: center -5%;
+    background-repeat: no-repeat;
+}
+
+
+
+footer{
+    text-align: center;
+}
+
+.parson{
+    position: relative;
+    top: -200px;
+    left: 0px;
+   
+}
+
+.contents{
+    text-align: center;
+   
+}
+

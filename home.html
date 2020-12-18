@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html id="body">
+    <head>
+        <meta charset="UTF-8">
+        <title>喰脳</title>
+        <link rel="stylesheet" href="home.css">
+        <!-- <link rel="stylesheet" href="../normalize.css"> -->
+    </head>
+    <body>
+        
+        <div class="contents">
+            <div class="content">
+                <h3>ゲームはこちらから▼</h3>
+                <p><h1><a href="game.html">喰脳</a></h1></p>
+            </div>
+            <div class="content">
+                <h3>プレイ後はアンケートにご協力お願いします。</h3>
+                <p><h1><a target="_blank" href="https://forms.gle/BFs8DUEdtknX14PBA">アンケートに答える</a></h1></p>
+            </div>
+        </div>
+
+        <script>
+            'use strict';
+            let i = 1;
+            document.getElementById('body').onclick = function(){
+                    i++;
+                    if(i == 9){
+                        i = 1;
+                    }
+                    
+                    let image = String(i) + '.png';
+                    document.body.style.backgroundImage = `url(${image})`;
+                }
+        </script>
+    </body>
+</html>

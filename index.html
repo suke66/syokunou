@@ -1,40 +1,36 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Konsui</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>
-    <script src="Build/UnityLoader.js"></script>
-    <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/syokunou4.json", {onProgress: UnityProgress});
-    </script>
-  </head>
-  <body>
-    <div class="webgl-content">
-      <div id="unityContainer" style="width: 960px; height: 600px"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <!-- <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div> -->
-        <!-- <div class="title">喰脳</div> -->
-      </div>
-    </div>
-    <video id="video" src="blood.mp4" preload="none" muted></video>
-  </body>
-  <script>
+<html id="body">
+    <head>
+        <meta charset="UTF-8">
+        <title>喰脳</title>
+        <link rel="stylesheet" href="home.css">
+        <!-- <link rel="stylesheet" href="../normalize.css"> -->
+    </head>
+    <body>
+        
+        <div class="contents">
+            <div class="content">
+                <h3>ゲームはこちらから▼</h3>
+                <p><h1><a href="game.html">喰脳</a></h1></p>
+            </div>
+            <div class="content">
+                <h3>プレイ後はアンケートにご協力お願いします。</h3>
+                <p><h1><a target="_blank" href="https://forms.gle/BFs8DUEdtknX14PBA">アンケートに答える</a></h1></p>
+            </div>
+        </div>
 
-    window.alert('このゲームはグロテスクな表現を含みます。予めご了承ください。')
-
-    // video要素を取得
-    const video = document.getElementById('video');
-
-    // Unity側から呼び出す関数
-    function videoPlay() {
-        video.play();
-    }
-
-  </script>
-
+        <script>
+            'use strict';
+            let i = 1;
+            document.getElementById('body').onclick = function(){
+                    i++;
+                    if(i == 9){
+                        i = 1;
+                    }
+                    
+                    let image = String(i) + '.png';
+                    document.body.style.backgroundImage = `url(${image})`;
+                }
+        </script>
+    </body>
 </html>

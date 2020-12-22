@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+1p&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body,
+        html {
+            background-color: black;
+            width: auto;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'M PLUS 1p', sans-serif;
+        }
+
+        html::-webkit-scrollbar {
+    display:none;
+}
+
+        .loop_wrap {
+            display: flex;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            /* flex-flow: row nowrap; */
+        }
+
+        .loop_wrap:hover ul {
+            animation-play-state: paused !important;
+        }
+
+        .loop_wrap ul {
+            display: flex;
+            padding-left: 0px;
+        }
+
+        .loop_wrap ul li {
+            list-style-type: none;
+            display: inline-block;
+            width: calc(100vw / 7);
+            height: calc(100vh / 6);
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        .loop_wrap ul li:hover {
+            opacity: .7;
+        }
+
+        .loop_wrap ul li img {
+            display: block;
+            width: calc(100vw / 7);
+            height: calc(100vh / 6);
+            will-change: transform;
+            /* width: auto;
+            height: 100%; */
+
+        }
+
+        @keyframes loop {
+            0% {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes loop2 {
+            0% {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-200%);
+            }
+        }
+
+        .loop_wrap ul:first-child {
+            animation: loop 30s -15s linear infinite;
+            backface-visibility: hidden;
+            will-change: transform;
+        }
+
+        .loop_wrap ul:last-child {
+            animation: loop2 30s linear infinite;
+        }
+
+        .display {
+            padding: 0px;
+            text-align: center;
+        }
+
+        #pickupImageFrame {
+            /* border: #f00 3px solid; */
+        }
+
+        #pickupImage {
+            width: calc(100vw / 3);
+            height: calc(100vh / 3);
+        }
+
+        #pickupName {
+            color: #fff;
+            font-size: 200%;
+            font-weight: bold;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #pickupText {
+            color: #fff;
+            font-size: 150%;
+            /* font-weight: bold; */
+            line-height: 200%;
+        }
+
+        #audioBGM {
+            text-align: center;
+            color: #fff;
+            border: #fff 5px solid;
+            position: absolute;
+            top: 20%;
+            left: 10%;
+        }
+
+        #audioName {
+            font-size: 150%;
+            font-weight: bold;
+            padding-top: 5px;
+        }
+
+
+        #audioSE {
+            text-align: center;
+            color: #fff;
+            font-size: 100%;
+            border: #fff 5px solid;
+            position: absolute;
+            top: 20%;
+            left: 70%;
+        }
+
+        #audioArea li {
+            color: #fff;
+            list-style-type: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loop_wrap">
+        <ul>
+            <li><img src="./image/mukade.png" alt="ムカデ" onclick="ImageClick(0)"></li>
+            <li><img src="./image/boxman_blue.png" alt="ボックスマン青" onclick="ImageClick(1)"></li>
+            <!-- <li><img src="./image/boxman_yellow.png" alt="ボックスマン黄"></li> -->
+            <li><img src="./image/meat.png" alt="ミート君ブラザーズ" onclick="ImageClick(2)"></li>
+            <li><img src="./image/hasira.png" alt="柱" onclick="ImageClick(3)"></li>
+            <li><img src="./image/headman.png" alt="ヘッドマン" onclick="ImageClick(4)"></li>
+            <li><img src="./image/enjin.png" alt="エンジン" onclick="ImageClick(5)"></li>
+            <li><img src="./image/jouhansin.png" alt="上半身少女" onclick="ImageClick(6)"></li>
+            <li><img src="./image/hadairoHeadman.png" alt="肌色ヘッドマン" onclick="ImageClick(7)"></li>
+        </ul>
+        <ul>
+            <li><img src="./image/bigGirl.png" alt="ビッグガール" onclick="ImageClick(8)"></li>
+            <li><img src="./image/plantman.png" alt="プラントマン" onclick="ImageClick(9)"></li>
+            <li><img src="./image/higesori.png" alt="髭剃り" onclick="ImageClick(10)"></li>
+            <li><img src="./image/paperman.png" alt="ペーパーマン" onclick="ImageClick(11)"></li>
+            <li><img src="./image/airmen_nomal.png" alt="エアーマン" onclick="ImageClick(12)"></li>
+            <li><img src="./image/player.png" alt="主人公" onclick="ImageClick(13)"></li>
+            <li><img src="./image/teather.png" alt="先生" onclick="ImageClick(14)"></li>
+            <li><img src="./image/treeman.png" alt="ツリー" onclick="ImageClick(15)"></li>
+        </ul>
+    </div>
+
+    <div class="display">
+        <p id="pickupName">&lt;喰脳&gt;</p>
+        <p id="pickupImageFrame"><img src="./image/syokunou.jpg" alt="" id="pickupImage"></p>
+        <p id="pickupText">チーム名「Browser's」<br>開発目標「デザイン・音・プログラムを自分たちで自作する」<br>職業能力開発校を舞台にしたステージで<br>怪物に捕まらないように逃げながら<br>できるだけ多くの資格を取得して就職を目指すゲーム<br>ちなみに、背景の脳は主人公の脳</p>
+        <p>
+            <h1><a href="index.html">戻る</a></h1>
+        </p>
+    </div>
+
+    <div id="audioArea" class="loop_wrap">
+        <ul>
+            <li>ムカデ<br><audio src="./audio/mukade.wav" controls></audio></li>
+            <li>ボックスマン青<br><audio src="./audio/boxmanBlue.wav" controls></audio></li>
+            <li>ボックスマン黄<br><audio src="./audio/boxmanYellow.wav" controls></audio></li>
+            <li>ミート君<br><audio src="./audio/meat_tyu.wav" controls></audio></li>
+            <li>柱<br><audio src="./audio/hasira.wav" controls></audio></li>
+            <li>エンジン<br><audio src="./audio/enjin.wav" controls></audio></li>
+            <li>上半身<br><audio src="./audio/jouhansin.wav" controls></audio></li>
+            <li>肌色ヘッドマン<br><audio src="./audio/hadairoHeadman.wav" controls></audio></li>
+            <li>ビッグガール<br><audio src="./audio/bigGirl.wav" controls></audio></li>
+        </ul>
+        <ul>
+            <li>プラントマン「おーい」<br><audio src="./audio/plantman_ohi.wav" controls></audio></li>
+            <li>プラントマン「助けて」<br><audio src="./audio/plantman_help.wav" controls></audio></li>
+            <li>飛び立つ髭剃り<br><audio src="./audio/higesori_fry.wav" controls></audio></li>
+            <li>降り立つ髭剃り<br><audio src="./audio/higesori_down.wav" controls></audio></li>
+            <li>エアーマン<br><audio src="./audio/airman.wav" controls></audio></li>
+            <li>スタートBGM<br><audio src="./audio/StartBGM.mp3" controls></audio></li>
+            <li>ストーリーBGM<br><audio src="./audio/StoryBGM.mp3" controls></audio></li>
+            <li>ゲームBGM<br><audio src="./audio/game.mp3" controls></audio></li>
+            <li>バトルBGM<br><audio src="./audio/BattleBGM.mp3" controls></audio></li>
+        </ul>
+    </div>
+
+    <script>
+        // ピックアップで表示する対象のDOM要素を取得
+        var pickupImage = document.getElementById('pickupImage');
+        var pickupName = document.getElementById('pickupName');
+        var pickupText = document.getElementById('pickupText');
+
+        // 画像PATHの配列
+        var imgArray = [
+            './image/mukade.png',
+            './image/boxmans.png',
+            './image/meat.png',
+            './image/hasira.png',
+            './image/headman.png',
+            './image/enjin.png',
+            './image/jouhansin.png',
+            './image/hadairoHeadman.png',
+            './image/bigGirl.png',
+            './image/plantman.png',
+            './image/higesori.png',
+            './image/paperman.png',
+            './image/airmens.png',
+            './image/player.png',
+            './image/teather.png',
+            './image/treeman.png'
+        ];
+
+        // ピックアップネームの内容配列
+        var nameArray = [
+            'ムカデ',
+            'ボックスマンたち',
+            'ミート君',
+            '柱',
+            'ヘッドマン',
+            'エンジン',
+            '上半身少女',
+            '肌色ヘッドマン',
+            'ビッグガール',
+            'プラントマン',
+            '髭剃り',
+            'ペーパーマン',
+            'エアーマンズ',
+            '主人公',
+            '先生',
+            'ツリーマン'
+        ];
+
+        // ピックアップテキストの内容配列
+        var textArray = [
+            // ムカデ
+            'ムカデと呼ばれているが、カマキリに近い。<br>動くものは全て餌だと思っている。<br>なので人間がいないときは狙いやすいミート君を食べることもある。<br>でもやっぱり人間が一番おいしいので人間がいると人間を食べる。<br>動きが不自然なのは、一番最初に作った怪物だから。<br>音はジキニンの小袋。',
+            // ボックスマン
+            '資格に擬態した怪物。<br>資格を取得できなかった者たちが、資格を取得できないのなら自分が資格になってしまおうと考え怪物になってしまった。<br>顔の意識はそれぞれ独立しており、暇な時は顔同士で会話をしたりする。<br>胃はつながっているので、誰が食べてもお腹いっぱいになる。<br>合格者をこれ以上増やしたくないので主人公を追いかける。',
+            // ミート君
+            '三匹は兄弟。<br>一番大きいのが長男で順に次男、末っ子となっている。<br>主人公のことをママだと思っているのでにおいをたどってついてくる。<br>本当の母親は数年前にエンジンにひき殺された。<br>学校から出てきて右側にある建物の中の足と血は母親の残骸。<br>熱い肉でおおわれてみえないが一応、目と鼻と口はある。',
+            // 柱
+            '巨大な肉の塊のような生き物。<br>すごく柔らかいので、誰でも中に入ることができる。<br>すごく寂しがりやなので、別の生き物が中にいると安心するらしい。<br>中は程よく暖かく、フルーティなにおいがする。<br>主人公が近寄ると、動いてアピールする。<br>でも長くいすぎると消化されてしまうので注意。',
+            // ヘッドマン
+            '柱の中がすごしやすすぎて、家族ともども住まわせてもらっている。<br>しかしヘッドマンといえども長くいすぎると柱に消化されてしまうため、<br>子供のヘッドマンは体の半分を時間をかけていれることで体が溶けないように免疫をつくっている。<br>完全に成体になったヘッドマンは溶けないので、柱の外に出ることはない。<br>主人公を追いかけるのは、成体のヘッドマンを守るため。',
+            // エンジン
+            'エンジンの名前の由来は円陣を組んでいるように見えるから。<br>新入生歓迎球技大会で団結力が強すぎたために怪物になってしまった。<br>人間には興味がなく、ただ走り回ることだけを楽しみとしているが、<br>足が速すぎるためにぶつかるとひき殺されてしまう。<br>声は開発者２名と即席の声優２名に協力してもらい、実際に４人の声を使用している。<br>ゲーム開発者一番人気の怪物。',
+            // 上半身
+            '自分と似たような分身をたくさん作りだすことで<br>欲にかられた人間を獲物をおびき寄せる。<br>本体である上半身以外はただの飾りであるため触れても害はない。<br>女の子に擬態しているのは、人間をおびき寄せるためだが、<br>作りすぎて逆に不自然になり、なかなか人が近寄ってこないのが悩み。',
+            // 肌色ヘッドマン
+            'ヘッドマン（赤）と一緒の生き物であるが、<br>突然変異で色が違ってしまったために兄弟にいじめられ、巣（柱）をおいだされてしまった。<br>知能が高く、人の言葉を勉強している。<br>主人公を追いかけるのは、勉強した日本語を聞いてほしいから。<br>ただ、スピードの調節が苦手なので、ぶつかると危険。',
+            // ビッグガール
+            '体から、数秒間動けなくなる毒ガスを噴射し、動けないところを大きい手足で叩き潰してクッキー状にしてから食べる。<br>人間が資格を目指して寄ってくることを理解するだけの知性があり、<br>意図的に資格付近に陣取って人間が来るのを待っている。<br>本来は毒ガスを噴射する際、体が膨れ上がる幻のアニメーションが存在したが、<br>開発者の都合か　はたまた　喰業脳力開発校の不思議な磁場がそうさせたのか、<br>その行方を知る者はいない・・・・。',
+            // プラントマン
+            '人間に擬態した生き物。<br>人の言葉を話しているが、言葉の意味を理解しているわけではなく、<br>今まで食べてきた人間の声をまねしているだけ。<br>地面に埋まっている方が本体。<br>飛び出している人間に似た部分は鼻。<br>頭のてっぺんに穴があり、地面に潜っているときはここから呼吸する。',
+            // 髭剃り
+            '名前の由来は、開発者が髭剃りに似ていると言ったから。<br>足の形は、着地の際　衝撃を減らす構造になっているが、それゆえに歩くことはできず、移動手段は飛ぶことしかできない。<br>獲物をみつけると頭上を付きまとい、狙いを定めると足で串刺しにする。<br>実は、制作の段階で羽はなかったが、空を飛ぶタイプの敵が欲しいということで羽をはやした。',
+            // ペーパーマン
+            '実は普通の人間。<br>エンジンにひかれて、奇跡的に死ななかったが、平たくなってしまった。<br>主人公を追いかけるのは助けてほしいから。<br>でも声帯がつぶれているのでうめき声しか出せない。<br>開発当初は使いにくいということで数か月は眠っていたが、逆転復活を果たした。<br>よかったね。ペーパーマン。',
+            // エアーマン
+            '羽の部分（正確には腕）は薄く鋭いので触れてしまうと切れてしまう。<br>色違いの個体が確認されているが違う生物ではなく、生まれてからどれくらい時間がたっているかで色が変わるらしい。<br>肌色→黄色→赤色→青色→緑色　の順に年齢が高いと言われている。<br>主人公を追いかけてくるのは主人公を殺した後死体を使って巣を作ろうとしているから。<br>巣を作るのはオス。ゲームでは見ることはできないが、巣には一回り大きい金色のメスがいる。',
+            // 主人公
+            '喰業脳力開発校に入学した、就職したい男性。<br>パソコン関係の資格を取得するのに、なぜ怪物のあふれているステージを走り回らないといけないのか。<br>そんな疑問を抱えている。<br>バトルモードで操作するのは卒業して数年後の主人公で、ITを極めすぎたためにバリアとビームが出るようになってしまった。',
+            // 先生
+            '喰業脳力開発校の先生。<br>生徒思いで常に生徒のことを第一に考え、<br>就職に関する相談には真摯にのり、<br>わからない授業があれば付きっ切りで勉強を教えてくれる。<br>卒業式はいつも泣いてしまうほど、生徒思いの優しい先生。<br>趣味は脳みそをいじること。',
+            // ツリーマン
+            '完全にお蔵入りになってしまった怪物。<br>葉っぱの部分にあたる腕に小さい怪物が実のようになっており、近寄るとその怪物の実が落ち、追いかけてくる。<br>という設定であったが、<br>制作時間の都合や、これ以上怪物を増やすと処理が重くなってしまうという理由などから今回本編に登場する機会はなくなってしまった。<br>他にも、超音波を出す怪物やチョウチンアンコウみたいな怪物など、<br>設定までは考えたが実現しなかったものも多数いる。'
+        ];
+
+        // クリック対象に応じて処理を変える
+        function ImageClick(num) {
+            pickupImage.src = imgArray[num];
+            pickupName.textContent = `【` + nameArray[num] + `】`;
+            pickupText.innerHTML = textArray[num];
+        }
+    </script>
+</body>
+
+</html>
